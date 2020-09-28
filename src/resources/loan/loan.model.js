@@ -6,8 +6,20 @@ const loanSchema = new mongoose.Schema(
       type: Number,
       required: true
     },
-    description: {
+    plan: {
       type: String,
+      required: true
+    },
+    category: {
+      type: String,
+      required: true
+    },
+    paymentperiod: {
+      type: String,
+      required: true
+    },
+    paymentamount: {
+      type: Number,
       required: true
     },
     createdBy: {

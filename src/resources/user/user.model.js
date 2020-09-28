@@ -58,4 +58,8 @@ userSchema.methods.checkPassword = function(password) {
   })
 }
 
+userSchema.virtual('name').get(function() {
+  return `${this.firstname} ${this.lastname}`
+})
+
 export const User = mongoose.model('user', userSchema)

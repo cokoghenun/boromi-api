@@ -20,6 +20,7 @@ export const getMany = model => async (req, res) => {
   try {
     const docs = await model
       .find({ createdBy: req.user._id })
+      .sort('-createdAt')
       .lean()
       .exec()
 
