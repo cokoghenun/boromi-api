@@ -1,27 +1,15 @@
-import { merge } from 'lodash'
-const env = process.env.NODE_ENV || 'development'
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
 const baseConfig = {
-  env,
-  isDev: env === 'development',
   port: process.env.PORT,
+  dbUrl: process.env.DB_URL,
+  env: process.env.NODE_ENV || 'development',
   secrets: {
     jwt: process.env.JWT_SECRET,
     jwtExp: '100d'
   }
 }
 
-let envConfig = {}
-
-switch (env) {
-  case 'development':
-    envConfig = require('./dev').config
-    break
-  case 'production':
-    envConfig = require('./prod').config
-    break
-  default:
-    envConfig = require('./dev').config
-}
-
-export default merge(baseConfig, envConfig)
+export default baseConfig
