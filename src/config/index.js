@@ -14,9 +14,11 @@ const baseConfig = {
 let envConfig = {}
 
 switch (env) {
-  case 'dev':
   case 'development':
     envConfig = require('./dev').config
+    break
+  case 'production':
+    envConfig = require('./prod').config
     break
   default:
     envConfig = require('./dev').config
