@@ -17,6 +17,7 @@ app.use(json())
 app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
+app.get('/', (_, res) => res.send({ ok: true }))
 app.post('/signup', signup)
 app.post('/signin', signin)
 
